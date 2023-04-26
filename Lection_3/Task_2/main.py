@@ -1,7 +1,7 @@
-def drawrRomb(size=5):
-    for i in range(size):
-        print(" " * (size-i-1) + "* " * (i + 1))
-    for i in range(size-2, -1, -1):
-        print(" " * (size-i-1) + "* " * (i+1))
-
-drawrRomb(5)
+def drawRomb(size=5, element=0):
+    if element == size:
+        return
+    print(" " * (size-element-1) + "* " * (element + 1))
+    drawRomb(size, element+1)
+    print(" " * (size-element-1) + "* " * (element + 1))
+drawRomb(5)
