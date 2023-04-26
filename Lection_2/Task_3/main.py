@@ -1,13 +1,14 @@
-print ("use a space to separate the elements of the list")
+num_sets = int(input("Enter the number of sets: "))
+print("Use a space to separate the elements of the sets")
+sets = []
 
-set1 = set(input("Enter the first set of elements: ").split())
-set2 = set(input("Enter the second set of elements: ").split())
-set3 = set(input("Enter the third set of elements: ").split())
+for сount in range(num_sets):
+    new_sets = set(input("Enter the elements of set " + str(сount+1) + ": ").split())
+    sets.append(new_sets)
 
-dubl_el_set1 = set(filter(lambda x: x in set2 or x in set3, set1))
-dubl_el_set2 = set(filter(lambda x: x in set1 or x in set3, set2))
-dubl_el_set3 = set(filter(lambda x: x in set1 or x in set2, set3))
-
-result = dubl_el_set1.union(dubl_el_set2, dubl_el_set3)
-
-print("Non-unique elements from all sets: ", result)
+duplicate_elements = set()
+for set_activ in range(num_sets):
+    for set_next in range(set_activ+1, num_sets):
+        duplicate_elements.update(sets[set_activ].intersection(sets[set_next]))
+        
+print("Non-unique elements from all sets: ", duplicate_elements)
